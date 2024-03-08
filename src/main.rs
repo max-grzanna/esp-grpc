@@ -1,12 +1,12 @@
 //! Simple HTTP client example.
 
 use core::convert::TryInto;
-use std::env;
 use embedded_svc::{
     http::{client::Client as HttpClient, Method},
     utils::io,
     wifi::{AuthMethod, ClientConfiguration, Configuration},
 };
+use std::env;
 
 use esp_idf_svc::hal::peripherals::Peripherals;
 use esp_idf_svc::http::client::EspHttpConnection;
@@ -17,12 +17,10 @@ use esp_idf_svc::{eventloop::EspSystemEventLoop, nvs::EspDefaultNvsPartition};
 
 use log::{error, info};
 
-
 const SSID: &str = env!("WIFI_SSID");
 const PASSWORD: &str = env!("WIFI_PASS");
 
 fn main() -> anyhow::Result<()> {
-
     esp_idf_svc::sys::link_patches();
     // Bind the log crate to the ESP Logging facilities
     esp_idf_svc::log::EspLogger::initialize_default();
@@ -44,11 +42,8 @@ fn main() -> anyhow::Result<()> {
     // GET
     get_request(&mut client)?;
 
-
-
     Ok(())
 }
-
 
 fn get_request(client: &mut HttpClient<EspHttpConnection>) -> anyhow::Result<()> {
     // Prepare headers and URL
@@ -139,11 +134,3 @@ fn read_message(mut body: impl Read) -> anyhow::Result<Vec<u8>> {
     Ok(buffer)
 }
 */
-
-
-/*
-    0. HTTP-Client initialisieren
-    1. Aufbauen einer Http Connection via http/2 im besten Fall
-    2. Erstellen der Header? Möglicherweise ("Content-Type", "application/grpc+proto")
-    3. Erstellen des Requests, POST mit der proto-message und Lesen der proto-response
- */
