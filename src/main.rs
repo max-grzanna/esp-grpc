@@ -4,18 +4,16 @@ use core::convert::TryInto;
 use std::env;
 use embedded_svc::{
     http::{client::Client as HttpClient, Method},
-    io::Write,
     utils::io,
     wifi::{AuthMethod, ClientConfiguration, Configuration},
 };
 
 use esp_idf_svc::hal::peripherals::Peripherals;
 use esp_idf_svc::http::client::EspHttpConnection;
-use esp_idf_svc::log::EspLogger;
 use esp_idf_svc::wifi::{BlockingWifi, EspWifi};
 use esp_idf_svc::{eventloop::EspSystemEventLoop, nvs::EspDefaultNvsPartition};
-use byteorder::{ByteOrder, BigEndian, ReadBytesExt};
-use embedded_svc::io::Read;
+//use byteorder::{ByteOrder, BigEndian, ReadBytesExt};
+//use embedded_svc::io::Read;
 
 use log::{error, info};
 
